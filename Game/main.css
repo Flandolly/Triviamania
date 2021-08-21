@@ -1,7 +1,11 @@
 body {
-
+    background-color: #527cff;
 }
 
+
+/********************
+Styling for the tutorial modal box
+*********************/
 #modal {
     background-color: rgba(0,0,0,0.7);
     position: fixed;
@@ -11,10 +15,11 @@ body {
     width: 100%;
     z-index: 1;
     overflow: auto;
+    display: none;
 }
 
 #modal-textbox {
-    background-color: #b9ecab;
+    background-color: #abbaec;
     height: 350px;
     width: 550px;
     border-radius: 2px;
