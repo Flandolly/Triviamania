@@ -15,13 +15,28 @@ Styling for the tutorial modal box
     width: 100%;
     z-index: 1;
     overflow: auto;
-    display: none;
+    display: block;
 }
 
 #modal-textbox {
     background-color: #abbaec;
     height: 350px;
     width: 550px;
-    border-radius: 2px;
+    border-radius: 5px;
     margin: 200px auto;
+    padding: 2%;
+    line-height: 120%;
+}
+
+img.modal-p1, img.modal-p2, img.modal-p3 {
+    width: 30%;
+    margin: 0 auto;
+}
+
+img.modal-p2 {
+    display: inline-block;
+}
+
+img.modal-p1, img.modal-p3 {
+    display: block;
 }
