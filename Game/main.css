@@ -38,10 +38,16 @@ img.modal-p1, img.modal-p3 {
     display: block;
 }
 
+.img-container {
+    display: flex;
+    align-items: center;
+}
+
 img.modal-p1, img.modal-p2, img.modal-p3 {
     width: 25%;
     margin: 0 auto;
 }
+
 
 .p2, .p3 {
     display: none;
