@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&display=swap');
+
 body {
     background-color: #527cff;
 }
 
 
 /********************
-Styling for the tutorial modal box
+Tutorial Modals
 *********************/
 #modal {
     background-color: rgba(0,0,0,0.7);
@@ -15,23 +17,38 @@ Styling for the tutorial modal box
     width: 100%;
     z-index: 1;
     overflow: auto;
-    display: block;
+    display: none;
 }
 
 #modal-textbox {
+    font-family: "Klee One", fantasy;
     background-color: #abbaec;
     height: 350px;
     width: 550px;
-    border-radius: 5px;
+    border-radius: 15px;
+    border: 2px solid #21217a;
     margin: 200px auto;
     padding: 3%;
     line-height: 120%;
+}
+#modal-header {
+    margin-top: 0;
+    height: 40px;
+    text-align: center;
+    border-bottom: 2px solid;
+    /*Border gradients sourced from: https://stackoverflow.com/questions/2717127/gradient-borders */
+    border-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1), rgba(0,0,0,0));
+    border-image-slice: 1;
 }
 
 #modal-footer {
     margin-top: 10px;
     width: 550px;
     height: 100px;
+    border-top: 2px solid;
+    /*Border gradients sourced from: https://stackoverflow.com/questions/2717127/gradient-borders */
+    border-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1), rgba(0,0,0,0));
+    border-image-slice: 1;
 }
 
 img.modal-p1, img.modal-p3 {
@@ -45,9 +62,12 @@ img.modal-p1, img.modal-p3 {
 
 img.modal-p1, img.modal-p2, img.modal-p3 {
     width: 25%;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
+.p3 img, .p1 img {
+    margin-top: -15px;
+}
 
 .p2, .p3 {
     display: none;
@@ -57,9 +77,14 @@ img.modal-p1, img.modal-p2, img.modal-p3 {
     height: 220px;
 }
 
-.modal-buttons {
+.modal-buttons, #modalBtn {
+    font-family: "Klee One", fantasy;
     margin-top: 10px;
     padding: 15px;
+    background-color: #21217a;
+    color: floralwhite;
+    border-radius: 10px;
+    border: 3px solid #254ec4;
 }
 
 #close {
@@ -75,3 +100,46 @@ img.modal-p1, img.modal-p2, img.modal-p3 {
 #prev {
     display: none;
 }
+
+/*****************************
+Main Body - Question Area
+ *****************************/
+
+#html {
+    overflow-x: hidden;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+}
+
+#question-area {
+    border: 1px solid black;
+    width: 80%;
+    height: 533px;
+}
+
+#timer {
+    border: 1px solid black;
+    width: 100px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+#main-body {
+    border: 1px solid black;
+    width: 100%;
+    height: 450px;
+}
+
+/*****************************
+ Main Body - Choices
+ *****************************/
+
+
+
+
+/*****************************
+ Animations
+ *****************************/

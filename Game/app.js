@@ -61,7 +61,6 @@ function changePage(buttonId) {
 }
 
 openModalButton.addEventListener("click", function() {
-    pageIndex = 0
     openModal()
 })
 closeModalButton.addEventListener("click", function() {
