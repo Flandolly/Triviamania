@@ -1,6 +1,6 @@
-/*
-Functionality for Tutorial modal
- */
+/****************************
+ ****  How To Play Modal
+ ****************************/
 
 {
     const openModalButton = document.getElementById("modalBtn")
@@ -75,4 +75,25 @@ Functionality for Tutorial modal
     prevButton.addEventListener("click", function() {
         changePage(prevButton.id)
     })
+}
+
+/****************************
+ **** Timer
+ ****************************/
+
+{
+    const timer = document.getElementById("timer-number")
+
+    timer.innerText = parseInt("5").toFixed(2)
+
+    let timerInterval = setInterval(decrementTimer, 10)
+
+    function decrementTimer() {
+        if (parseFloat(timer.innerText) <= "0") {
+            clearInterval(timerInterval)
+        } else {
+            timer.innerText = (parseFloat(timer.innerText) - 0.01).toFixed(2)
+        }
+    }
+
 }
