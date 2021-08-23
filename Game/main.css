@@ -131,6 +131,13 @@ Main Body - Question Area
     height: 450px;
 }
 
+.question-text {
+    font-family: "Klee One", fantasy;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+}
+
 /*****************************
  Main Body - Choices
  *****************************/
