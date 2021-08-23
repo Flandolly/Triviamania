@@ -1,3 +1,5 @@
+// noinspection ES6ConvertVarToLetConst
+
 /****************************
  ****  How To Play Modal
  ****************************/
@@ -126,20 +128,34 @@
 }
 
 /****************************
- **** Choice Buttons
+ **** Choice Buttons + Lock
  ****************************/
 
 {
-    // Grabs choice buttons
+    // Grabs choice buttons and lock button
     const choices = document.querySelectorAll(".choice-buttons")
+    const lockButton = document.getElementById("lock")
+    let choiceMade = false
+    lockButton.setAttribute("disabled", "disabled")
+
+    /*
+        Lock button functionality inspired/sourced from:
+        https://stackoverflow.com/questions/6199773/how-to-enable-disable-an-html-button-based-on-scenarios
+    */
+
+    // Stops the timers when user locks in their choice
+    lockButton.onclick = function() {
+        clearInterval(timerInterval)
+        clearInterval(colorInterval)
+        console.log("Timers stopped.")
+    }
 
     // Adds a click event for each button
     choices.forEach(choice => {
-        //console.log(choice)
         choice.onclick = function () {
-            clearInterval(timerInterval)
-            clearInterval(colorInterval)
-            console.log("Timers stopped.")
+            choiceMade = true
+            lockButton.disabled = ""
+            console.log(`Button ${choice.id} clicked.`)
         }
     })
 }

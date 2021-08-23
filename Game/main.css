@@ -187,9 +187,17 @@ Main Body - Question Area
     font-weight: bolder;
     width: 100%;
     height: 50px;
-    border: 2px solid #ffda00;
+    border: 2px solid #66ff00;
+    background-color: #50912f;
+    cursor: pointer;
     border-radius: 25px;
-    background-color: #91842f;
+    font-size: 26px;
+}
+
+#lock:disabled {
+    border: 2px solid #e5eae5;
+    background-color: #888888;
+    cursor: not-allowed;
 }
 
 #timer-number {
