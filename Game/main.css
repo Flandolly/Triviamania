@@ -46,7 +46,6 @@ Tutorial Modals
     width: 550px;
     height: 100px;
     border-top: 2px solid;
-    /*Border gradients sourced from: https://stackoverflow.com/questions/2717127/gradient-borders */
     border-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1), rgba(0,0,0,0));
     border-image-slice: 1;
 }
@@ -111,7 +110,8 @@ Main Body - Question Area
 
 #container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 #question-area {
@@ -137,7 +137,29 @@ Main Body - Question Area
  Main Body - Choices
  *****************************/
 
+#choice-area {
+    display: flex;
+    flex-flow: row wrap;
+    border: 1px solid black;
+    width: 80%;
+    height: 250px;
+    flex-direction: column;
+}
 
+.choice-buttons {
+    display: flex;
+    font-family: "Klee One", fantasy;
+    font-size: 26px;
+    width: 578px;
+    height: 115px;
+    word-wrap: break-word;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #21217a;
+    color: floralwhite;
+    border-radius: 10px;
+    border: 3px solid #254ec4;
+}
 
 
 /*****************************
