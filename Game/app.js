@@ -84,16 +84,43 @@
 {
     const timer = document.getElementById("timer-number")
 
-    timer.innerText = parseInt("5").toFixed(2)
+    timer.innerText = parseInt("30").toFixed(2)
 
-    let timerInterval = setInterval(decrementTimer, 10)
+    //Starts timer decrement interval
+    const timerInterval = setInterval(decrementTimer, 10)
 
+    //Decrements the question timer by 0.1 every 0.1 seconds.
     function decrementTimer() {
         if (parseFloat(timer.innerText) <= "0") {
+            //Ends the timer interval when the timer hits 0
             clearInterval(timerInterval)
         } else {
             timer.innerText = (parseFloat(timer.innerText) - 0.01).toFixed(2)
         }
     }
 
+    {
+        //Starts color change interval
+        const colorInterval = setInterval(changeTextColor, 60)
+        let red = 0
+        let green = 255
+
+        //Changes the color of the timer text from green to red as the timer decrements
+        function changeTextColor() {
+
+            if (red <= 255) {
+                red++
+            } else if (green >= 0) {
+                green--
+            }
+
+            //Changed the text color
+            timer.style.color = `rgb(${red},${green},0)`
+
+            //Ends the color change when the color has fully reached red
+            if (red === 255 && green === 0) {
+                clearInterval(colorInterval)
+            }
+        }
+    }
 }
