@@ -159,12 +159,27 @@ Main Body - Question Area
     word-wrap: break-word;
     margin-top: 10px;
     padding: 10px;
-    background-color: #21217a;
-    color: floralwhite;
     border-radius: 10px;
-    border: 3px solid #254ec4;
     justify-content: center;
     align-items: center;
+    color: floralwhite;
+}
+
+#c1 {
+    background-color: #7a2121;
+    border: 3px solid #c42525;
+}
+#c2 {
+    background-color: #7a7621;
+    border: 3px solid #c4c125;
+}
+#c3 {
+    background-color: #49217a;
+    border: 3px solid #5225c4;
+}
+#c4 {
+    background-color: #7a5321;
+    border: 3px solid #c47f25;
 }
 
 /*****************************
