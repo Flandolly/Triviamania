@@ -6,7 +6,7 @@ body {
 
 
 /********************
-Tutorial Modals
+Tutorial Modal - Header
 *********************/
 #modal {
     background-color: rgba(0,0,0,0.7);
@@ -31,6 +31,7 @@ Tutorial Modals
     padding: 3%;
     line-height: 120%;
 }
+
 #modal-header {
     margin-top: 0;
     height: 40px;
@@ -115,21 +116,18 @@ Main Body - Question Area
 }
 
 #question-area {
-    border: 1px solid black;
     width: 80%;
     height: 533px;
+    margin-top: -50px;
+    margin-bottom: 75px;
 }
 
-#timer {
-    border: 1px solid black;
-    width: 100px;
-    height: 80px;
-    margin: 0 auto;
-}
 
 #main-body {
-    border: 1px solid black;
-    width: 100%;
+    border: 4px solid #254ec4;
+    background-color: #21217a;
+    border-radius: 15px;
+    width: 1150px;
     height: 450px;
 }
 
@@ -140,7 +138,6 @@ Main Body - Question Area
 #choice-area {
     display: flex;
     flex-flow: row wrap;
-    border: 1px solid black;
     width: 80%;
     height: 250px;
     flex-direction: column;
@@ -159,8 +156,49 @@ Main Body - Question Area
     color: floralwhite;
     border-radius: 10px;
     border: 3px solid #254ec4;
+    justify-content: center;
+    align-items: center;
 }
 
+/*****************************
+ Main Body - Timer, Score, Round
+ *****************************/
+
+#timer {
+    border: 4px solid #254ec4;
+    background-color: #21217a;
+    border-radius: 15px;
+    width: 140px;
+    height: 90px;
+    margin: 0 auto 35px;
+    color: white;
+    text-align: center;
+}
+
+#timer-number {
+    height: 65px;
+    font-size: 38px;
+}
+
+#timer, #score, #round {
+    font-family: "Klee One", fantasy;
+    font-weight: 600;
+}
+
+#score, #round {
+    position: fixed;
+    font-size: 24px;
+}
+
+#score {
+    left: 992px;
+    top: 30px;
+}
+
+#round {
+    left: 347px;
+    top: 30px;
+}
 
 /*****************************
  Animations
