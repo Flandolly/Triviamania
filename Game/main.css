@@ -163,23 +163,43 @@ Main Body - Question Area
     justify-content: center;
     align-items: center;
     color: floralwhite;
+    cursor: pointer;
 }
 
 #c1 {
     background-color: #7a2121;
     border: 3px solid #c42525;
 }
+
+#c1:hover {
+    background-color: #9b4646;
+}
+
 #c2 {
     background-color: #7a7621;
     border: 3px solid #c4c125;
 }
+
+#c2:hover {
+    background-color: #8d8a33;
+}
+
 #c3 {
     background-color: #49217a;
     border: 3px solid #5225c4;
 }
+
+#c3:hover {
+    background-color: #6742a1;
+}
+
 #c4 {
     background-color: #7a5321;
     border: 3px solid #c47f25;
+}
+
+#c4:hover {
+    background-color: #a87635;
 }
 
 /*****************************
@@ -207,6 +227,10 @@ Main Body - Question Area
     cursor: pointer;
     border-radius: 25px;
     font-size: 26px;
+}
+
+#lock:hover {
+    background-color: #60a63e;
 }
 
 #lock:disabled {

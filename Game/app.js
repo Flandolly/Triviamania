@@ -147,13 +147,18 @@
     lockButton.onclick = function() {
         clearInterval(timerInterval)
         clearInterval(colorInterval)
+        choiceMade = true
+        choices.forEach(choice => {
+            choice.setAttribute("disabled", "disabled")
+            choice.style.onmouseover = ""
+            choice.style.cursor = "not-allowed"
+        })
         console.log("Timers stopped.")
     }
 
     // Adds a click event for each button
     choices.forEach(choice => {
         choice.onclick = function () {
-            choiceMade = true
             lockButton.disabled = ""
             console.log(`Button ${choice.id} clicked.`)
         }
