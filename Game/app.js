@@ -87,7 +87,7 @@
     timer.innerText = parseInt("30").toFixed(2)
 
     //Starts timer decrement interval
-    const timerInterval = setInterval(decrementTimer, 10)
+    var timerInterval = setInterval(decrementTimer, 10)
 
     //Decrements the question timer by 0.1 every 0.1 seconds.
     function decrementTimer() {
@@ -101,7 +101,7 @@
 
     {
         //Starts color change interval
-        const colorInterval = setInterval(changeTextColor, 60)
+        var colorInterval = setInterval(changeTextColor, 60)
         let red = 0
         let green = 255
 
@@ -123,4 +123,23 @@
             }
         }
     }
+}
+
+/****************************
+ **** Choice Buttons
+ ****************************/
+
+{
+    // Grabs choice buttons
+    const choices = document.querySelectorAll(".choice-buttons")
+
+    // Adds a click event for each button
+    choices.forEach(choice => {
+        //console.log(choice)
+        choice.onclick = function () {
+            clearInterval(timerInterval)
+            clearInterval(colorInterval)
+            console.log("Timers stopped.")
+        }
+    })
 }
