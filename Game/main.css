@@ -177,9 +177,19 @@ Main Body - Question Area
     border-radius: 15px;
     width: 140px;
     height: 90px;
-    margin: 0 auto 35px;
+    margin: 0 auto 10px;
     color: white;
     text-align: center;
+}
+
+#lock {
+    font-family: "Klee One", fantasy;
+    font-weight: bolder;
+    width: 100%;
+    height: 50px;
+    border: 2px solid #ffda00;
+    border-radius: 25px;
+    background-color: #91842f;
 }
 
 #timer-number {
