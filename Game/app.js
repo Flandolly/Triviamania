@@ -95,10 +95,32 @@
     function decrementTimer() {
         if (parseFloat(timer.innerText) <= "0") {
             //Ends the timer interval when the timer hits 0
+            generateTimeUp()
+            disableButtons()
             clearInterval(timerInterval)
         } else {
             timer.innerText = (parseFloat(timer.innerText) - 0.01).toFixed(2)
         }
+    }
+
+    //Generates time out message
+    function generateTimeUp() {
+        const timeOver = document.createElement("p")
+        timeOver.innerText = "Time's Up!"
+        timeOver.classList.add("question-text")
+        timeOver.id = "time-over"
+        timeOver.style.color = "red"
+
+        document.getElementById("main-body").append(timeOver)
+    }
+    //Prevents choice buttons from registering clicks when the timer runs out
+    function disableButtons() {
+        const choices = document.querySelectorAll(".choice-buttons")
+        choices.forEach(choice => {
+            choice.setAttribute("disabled", "disabled")
+            choice.style.onmouseover = ""
+            choice.style.cursor = "not-allowed"
+        })
     }
 
     {
@@ -139,7 +161,7 @@
     lockButton.setAttribute("disabled", "disabled")
 
     /*
-        Lock button functionality inspired/sourced from:
+        Disable button functionality inspired/sourced from:
         https://stackoverflow.com/questions/6199773/how-to-enable-disable-an-html-button-based-on-scenarios
     */
 

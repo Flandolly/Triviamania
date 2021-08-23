@@ -105,8 +105,9 @@ img.modal-p1, img.modal-p2, img.modal-p3 {
 Main Body - Question Area
  *****************************/
 
-#html {
+html {
     overflow-x: hidden;
+    font-family: "Klee One", fantasy;
 }
 
 #container {
@@ -136,6 +137,12 @@ Main Body - Question Area
     color: white;
     font-size: 20px;
     padding: 20px;
+}
+
+#time-over {
+    position: fixed;
+    left: 660px;
+    top: 510px;
 }
 
 /*****************************
