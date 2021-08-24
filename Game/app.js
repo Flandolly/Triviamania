@@ -157,7 +157,8 @@
     // Grabs choice buttons and lock button
     const choices = document.querySelectorAll(".choice-buttons")
     const lockButton = document.getElementById("lock")
-    let choiceMade = false
+    let userChoice = ""
+    let timerStoppedAt = 0
     lockButton.setAttribute("disabled", "disabled")
 
     /*
@@ -169,20 +170,31 @@
     lockButton.onclick = function() {
         clearInterval(timerInterval)
         clearInterval(colorInterval)
-        choiceMade = true
         choices.forEach(choice => {
             choice.setAttribute("disabled", "disabled")
             choice.style.onmouseover = ""
             choice.style.cursor = "not-allowed"
         })
+        timerStoppedAt = document.getElementById("timer-number").innerText
         console.log("Timers stopped.")
+        console.log(`Player locked in their answer at ${timerStoppedAt} seconds.`)
+
     }
 
     // Adds a click event for each button
     choices.forEach(choice => {
         choice.onclick = function () {
             lockButton.disabled = ""
-            console.log(`Button ${choice.id} clicked.`)
+            userChoice = choice.id
+            console.log(`Button ${userChoice} clicked.`)
         }
     })
+}
+
+/****************************
+ **** Questions
+ ****************************/
+
+{
+
 }

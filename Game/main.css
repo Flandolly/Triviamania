@@ -145,6 +145,19 @@ html {
     top: 510px;
 }
 
+#category-title, #category {
+    position: absolute;
+    top: 122px;
+}
+
+#category-title {
+    left: 620px;
+}
+
+#category {
+    left: 720px;
+}
+
 /*****************************
  Main Body - Choices
  *****************************/
