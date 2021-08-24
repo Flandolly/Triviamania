@@ -158,6 +158,12 @@ html {
     left: 720px;
 }
 
+#question-list {
+    position: absolute;
+    left: 1270px;
+    top: 50px;
+}
+
 /*****************************
  Main Body - Choices
  *****************************/

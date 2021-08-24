@@ -236,7 +236,8 @@
             const reader = new FileReader()
             reader.onload = function() {
                 fileString = reader.result
-                parseQuestionList(fileString)
+                //parseQuestionList(fileString)
+                showQuestion(parseQuestionList(fileString))
             }
             reader.readAsText(fileList[0])
         })
@@ -254,6 +255,25 @@
         }
         //console.log(questions[0].getQuestion())
         return questions
+    }
+
+    function showQuestion(questionList) {
+        //Grabbing all the necessary question and choice elements
+        const questionText = document.getElementById("q-text")
+        const category = document.getElementById("category")
+        const choice1 = document.getElementById("c1")
+        const choice2 = document.getElementById("c2")
+        const choice3 = document.getElementById("c3")
+        const choice4 = document.getElementById("c4")
+
+        const randomNum = Math.floor(Math.random() * questionList.length)
+
+        questionText.innerText = questionList[randomNum].getQuestion()
+        category.innerText = questionList[randomNum].getCategory()
+        choice1.innerText = questionList[randomNum].getChoices()[0]
+        choice2.innerText = questionList[randomNum].getChoices()[1]
+        choice3.innerText = questionList[randomNum].getChoices()[2]
+        choice4.innerText = questionList[randomNum].getChoices()[3]
     }
 
     loadQuestionList()
