@@ -1,2 +1,2 @@
-You've successfully loaded a trivia question/Undefined/Choice A/Choice B/Choice C/Choice D
-You've loaded another trivia question/Undefined/Choice A/Choice B/Choice C/Choice D
+You've successfully loaded a trivia question/Undefined/Choice A/Choice B/Choice C/Choice D/Choice A
+You've loaded another trivia question/Undefined/Choice A/Choice B/Choice C/Choice D/Choice C

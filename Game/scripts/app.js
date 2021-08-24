@@ -196,30 +196,30 @@
  ****************************/
 
 {
-    // class Question {
-    //     constructor(question, answer, category, choices) {
-    //         this.question = question
-    //         this.answer = answer
-    //         this.choices = choices
-    //         this.category = category
-    //     }
-    //
-    //     getAnswer() {
-    //         return this.answer
-    //     }
-    //
-    //     getCategory() {
-    //         return this.category
-    //     }
-    //
-    //     getChoices() {
-    //         return this.choices
-    //     }
-    //
-    //     getQuestion() {
-    //         return this.question
-    //     }
-    // }
+    class Question {
+        constructor(question, answer, category, choices = []) {
+            this.question = question
+            this.answer = answer
+            this.choices = choices
+            this.category = category
+        }
+
+        getAnswer() {
+            return this.answer
+        }
+
+        getCategory() {
+            return this.category
+        }
+
+        getChoices() {
+            return this.choices
+        }
+
+        getQuestion() {
+            return this.question
+        }
+    }
 
     function loadQuestionList() {
         const file = document.createElement("input")
@@ -246,16 +246,15 @@
     function parseQuestionList(input) {
         //Splits the input string into individual question strings
         const questionListArray = input.split("\r\n")
-        const questionArray = []
-
-        //Splits the question string into their individual attributes
-
-        for (const question in questionListArray) {
-            questionArray.push(questionListArray[question].split("/"))
+        const questions = []
+        for(const question of questionListArray){
+            //Splits the question string into their individual attributes
+            const questionArr = question.split("/")
+            questions.push(new Question(questionArr[0], questionArr[6], questionArr[1], questionArr.slice(2,6)))
         }
-        console.log(questionArray)
+        //console.log(questions[0].getQuestion())
+        return questions
     }
 
     loadQuestionList()
-
 }
