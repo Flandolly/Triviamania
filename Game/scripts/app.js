@@ -196,5 +196,66 @@
  ****************************/
 
 {
+    // class Question {
+    //     constructor(question, answer, category, choices) {
+    //         this.question = question
+    //         this.answer = answer
+    //         this.choices = choices
+    //         this.category = category
+    //     }
+    //
+    //     getAnswer() {
+    //         return this.answer
+    //     }
+    //
+    //     getCategory() {
+    //         return this.category
+    //     }
+    //
+    //     getChoices() {
+    //         return this.choices
+    //     }
+    //
+    //     getQuestion() {
+    //         return this.question
+    //     }
+    // }
+
+    function loadQuestionList() {
+        const file = document.createElement("input")
+        let fileString = ""
+        file.id = "question-list"
+        file.setAttribute("type", "file")
+
+        /*
+        Sourced from: https://www.geeksforgeeks.org/how-to-read-a-local-text-file-using-javascript/
+         */
+
+        file.addEventListener("change", function(event) {
+            const fileList = event.target.files
+            const reader = new FileReader()
+            reader.onload = function() {
+                fileString = reader.result
+                parseQuestionList(fileString)
+            }
+            reader.readAsText(fileList[0])
+        })
+        document.querySelector("header").append(file)
+    }
+
+    function parseQuestionList(input) {
+        //Splits the input string into individual question strings
+        const questionListArray = input.split("\r\n")
+        const questionArray = []
+
+        //Splits the question string into their individual attributes
+
+        for (const question in questionListArray) {
+            questionArray.push(questionListArray[question].split("/"))
+        }
+        console.log(questionArray)
+    }
+
+    loadQuestionList()
 
 }
