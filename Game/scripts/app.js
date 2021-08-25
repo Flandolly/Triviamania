@@ -237,6 +237,7 @@
             reader.onload = function() {
                 fileString = reader.result
                 //parseQuestionList(fileString)
+                document.getElementById("q-title").style.display = "none"
                 showQuestion(parseQuestionList(fileString))
             }
             reader.readAsText(fileList[0])

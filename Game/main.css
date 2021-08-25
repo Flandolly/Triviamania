@@ -117,10 +117,13 @@ html {
 }
 
 #question-area {
+    display: flex;
     width: 80%;
     height: 533px;
     margin-top: -50px;
     margin-bottom: 75px;
+    flex-direction: column;
+    align-items: center;
 }
 
 
@@ -140,28 +143,40 @@ html {
 }
 
 #time-over {
-    position: fixed;
-    left: 660px;
-    top: 510px;
+    position: relative;
+    left: 43%;
+    top: 41%;
 }
 
 #category-title, #category {
-    position: absolute;
-    top: 122px;
+    position: fixed;
+    top: 12.5%;
 }
 
 #category-title {
-    left: 620px;
+    left: 44%;
 }
 
 #category {
-    left: 720px;
+    left: 51%;
 }
 
 #question-list {
     position: absolute;
-    left: 1270px;
+    left: 85%;
     top: 50px;
+}
+
+/*
+add animation here
+ */
+
+#q-title {
+    position: absolute;
+    left: 86%;
+    top: 57px;
+    font-weight: bolder;
+    color: red;
 }
 
 /*****************************
@@ -174,6 +189,8 @@ html {
     width: 80%;
     height: 250px;
     flex-direction: column;
+    align-items: center;
+    align-content: space-around;
 }
 
 .choice-buttons {
@@ -246,7 +263,7 @@ html {
 #lock {
     font-family: "Klee One", fantasy;
     font-weight: bolder;
-    width: 100%;
+    width: 900px;
     height: 50px;
     border: 2px solid #66ff00;
     background-color: #50912f;
@@ -281,12 +298,12 @@ html {
 }
 
 #score {
-    left: 992px;
+    left: 58%;
     top: 30px;
 }
 
 #round {
-    left: 347px;
+    left: 32%;
     top: 30px;
 }
 
