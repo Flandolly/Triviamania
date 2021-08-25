@@ -209,6 +209,11 @@ add animation here
     cursor: pointer;
 }
 
+.clicked {
+    border-color: #FFFFFF;
+    box-shadow: 0 0 25px #FFFFFF;
+}
+
 #c1 {
     background-color: #7a2121;
     border: 3px solid #c42525;

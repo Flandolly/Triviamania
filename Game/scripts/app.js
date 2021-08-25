@@ -184,6 +184,14 @@
     // Adds a click event for each button
     choices.forEach(choice => {
         choice.onclick = function () {
+            if (document.querySelectorAll(".clicked").length >= 1) {
+                choices.forEach(choice => {
+                    choice.classList.remove("clicked")
+                })
+                choice.classList.add("clicked")
+            } else {
+                choice.classList.add("clicked")
+            }
             lockButton.disabled = ""
             userChoice = choice.id
             console.log(`Button ${userChoice} clicked.`)
