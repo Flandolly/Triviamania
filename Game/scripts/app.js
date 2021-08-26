@@ -158,7 +158,6 @@
     const choices = document.querySelectorAll(".choice-buttons")
     const lockButton = document.getElementById("lock")
     let userChoice = ""
-    let timerStoppedAt = 0
     lockButton.setAttribute("disabled", "disabled")
 
     /*
@@ -175,8 +174,12 @@
             choice.style.onmouseover = ""
             choice.style.cursor = "not-allowed"
         })
-        timerStoppedAt = document.getElementById("timer-number").innerText
-        checkAnswer(document.querySelector(".clicked"))
+        if (checkAnswer(document.querySelector(".clicked"))) {
+            calculatePoints()
+        } else {
+            document.getElementById("score-change").style.color = "black"
+            document.getElementById("score-change").innerText = "+0"
+        }
         //console.log("Timers stopped.")
         //console.log(`Player locked in their answer at ${timerStoppedAt} seconds.`)
 
@@ -241,8 +244,7 @@
     }
 
     var qList = new QuestionList()
-
-
+    let runningTotal = 0
 
     function loadQuestionList() {
         const file = document.createElement("input")
@@ -309,11 +311,11 @@
         const foundQuestion = qList.questions.find(element => {
             return element.question === document.getElementById("q-text").innerText;
         })
-        console.log(foundQuestion)
 
         if (playerChoice.innerText === foundQuestion.answer) {
             console.log("Player got the right answer!")
             playerChoice.classList.add("correct")
+            return true
         } else {
             console.log("Player got the wrong answer!")
             playerChoice.classList.add("wrong")
@@ -322,8 +324,22 @@
                     choice.classList.add("correct")
                 }
             }
+            return false
         }
-        }
+    }
+
+    function calculatePoints() {
+        const timerStopped = document.getElementById("timer-number").innerText
+        const score = document.getElementById("score")
+        const scoreChange = document.getElementById("score-change")
+        const base = 300
+        const multiplier = 50
+        const total = base + (parseInt(timerStopped) * multiplier)
+
+        runningTotal += total
+        score.innerText = `Score: ${runningTotal}`
+        scoreChange.innerText = `+${total}`
+    }
 
 
     loadQuestionList()
