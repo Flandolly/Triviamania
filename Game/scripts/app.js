@@ -86,9 +86,15 @@
 
 {
     const startButton = document.getElementById("start")
+    const choices = document.querySelectorAll(".choice-buttons")
+
     startButton.onclick = function () {
         startButton.style.display = "none"
         showQuestion(getUnplayedQuestions())
+        choices.forEach(choice => {
+            choice.disabled = ""
+            choice.style.cursor = "pointer"
+        })
         startTimer()
     }
 }
@@ -100,7 +106,24 @@
 {
     function endGame() {
         const modal = document.getElementById("end-modal")
+        const endButton = document.getElementById("restart")
+        const score = document.getElementById("score")
+        const rnd = document.getElementById("round")
+        const pScore = document.getElementById("player-score")
+
         modal.style.display = "block"
+        pScore.innerText = `Your Score: ${runningTotal}`
+
+        endButton.onclick = function() {
+            modal.style.display = "none"
+            round = 1
+            runningTotal = 0
+            playedQuestions = []
+            score.innerText = "Score: 0"
+            rnd.innerText = "Round: 1"
+            resetState()
+            document.getElementById("start").style.display = "block"
+        }
     }
 }
 
@@ -288,6 +311,7 @@
     var runningTotal = 0
     var fileString
     var playedQuestions = []
+    var round = 1
 
     function loadQuestionList() {
         const file = document.createElement("input")
@@ -403,7 +427,7 @@
  ****************************/
 
 {
-    var round = 1
+
 
     function startNewRound() {
         round++

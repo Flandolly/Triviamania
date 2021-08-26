@@ -239,7 +239,7 @@ add animation here
     justify-content: center;
     align-items: center;
     color: floralwhite;
-    cursor: pointer;
+    cursor: not-allowed;
     text-shadow: 2px 2px black;
 }
 
