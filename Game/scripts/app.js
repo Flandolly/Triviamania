@@ -102,6 +102,7 @@
 {
     const timer = document.getElementById("timer-number")
     var time
+    var colorInterval
 
     timer.innerText = parseInt("30").toFixed(2)
 
@@ -109,6 +110,7 @@
     //var timerInterval = setInterval(decrementTimer, 10)
     function startTimer() {
         time = setInterval(decrementTimer, 10)
+        colorInterval = setInterval(changeTextColor, 60)
     }
 
 
@@ -146,7 +148,7 @@
 
     {
         //Starts color change interval
-        var colorInterval = setInterval(changeTextColor, 60)
+        //var colorInterval = setInterval(changeTextColor, 60)
         let red = 0
         let green = 255
 
@@ -195,15 +197,17 @@
             choice.style.onmouseover = ""
             choice.style.cursor = "not-allowed"
         })
+        lockButton.disabled = "disabled"
         if (checkAnswer(document.querySelector(".clicked"))) {
             calculatePoints()
         } else {
             document.getElementById("score-change").style.color = "black"
             document.getElementById("score-change").innerText = "+0"
         }
-        //console.log("Timers stopped.")
-        //console.log(`Player locked in their answer at ${timerStoppedAt} seconds.`)
-
+        setTimeout(function() {
+            document.getElementById("score-change").style.display = "none"
+        }, 5000)
+        setTimeout(startNewRound, 5000)
     }
 
     // Adds a click event for each button
@@ -365,19 +369,24 @@
         runningTotal += total
         score.innerText = `Score: ${runningTotal}`
         scoreChange.innerText = `+${total}`
+        scoreChange.style.display = "block"
     }
 
 
 }
 //TODO: Implement rounds
-//TODO: Start Game
 //TODO: End Game
+//TODO: Prevent duplicate questions
 /****************************
  **** Rounds
  ****************************/
 
 {
     var round = 1
+
+    function startNewRound() {
+        //console.log("New Round Started")
+    }
 }
 
 loadQuestionList()
