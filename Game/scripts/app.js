@@ -88,7 +88,7 @@
     const startButton = document.getElementById("start")
     startButton.onclick = function () {
         startButton.style.display = "none"
-        showQuestion(loaded)
+        showQuestion(getUnplayedQuestions())
         startTimer()
     }
 }
@@ -272,9 +272,9 @@
     }
 
     var qList = new QuestionList()
-    let runningTotal = 0
-    var fileString = ""
-    var loaded = []
+    var runningTotal = 0
+    var fileString
+    var playedQuestions = []
 
     function loadQuestionList() {
         const file = document.createElement("input")
@@ -291,7 +291,7 @@
             reader.onload = function() {
                 fileString = reader.result
                 document.getElementById("q-title").style.display = "none"
-                loaded = parseQuestionList(fileString)
+                parseQuestionList(fileString)
                 document.getElementById("start").disabled = ""
             }
             reader.readAsText(fileList[0])
@@ -309,6 +309,16 @@
             qList.questions.push(new Question(questionArr[0], questionArr[6], questionArr[1], questionArr.slice(2,6)))
         }
         return qList.questions
+    }
+
+    function getUnplayedQuestions() {
+        //console.log(playedQuestions)
+        //console.log(qList.questions)
+
+        let unplayed = qList.questions.filter(question1 => !playedQuestions.some(question2 => question2.question === question1.question))
+
+        console.log(unplayed)
+        return unplayed
     }
 
     function showQuestion(questionList) {
@@ -332,6 +342,8 @@
         choice2.setAttribute("name", `${questionList[randomNum].getChoices()[1]}`)
         choice3.setAttribute("name", `${questionList[randomNum].getChoices()[2]}`)
         choice4.setAttribute("name", `${questionList[randomNum].getChoices()[3]}`)
+
+        playedQuestions.push(questionList[randomNum])
 
     }
 
@@ -385,10 +397,11 @@
     var round = 1
 
     function startNewRound() {
-        //console.log("New Round Started")
+        round++
+        document.getElementById("round").innerText = `Round: ${round}`
+        showQuestion(getUnplayedQuestions())
     }
-}
 
+
+}
 loadQuestionList()
-//showQuestion(loaded)
-//var timerInterval = setInterval(decrementTimer, 10)
