@@ -1,2 +1,2 @@
-You've successfully loaded a trivia question/Random/Choice A/Choice B/Choice C/Choice D/Choice A
-You've loaded another trivia question/Super Random/Choice AA/Choice BB/Choice CC/Choice DD/Choice CC
+What year was the very first model of the iPhone released?,Technology,2010,2002,2007,1998,2007
+Which e-mail service is owned by Microsoft?,Technology,Hotmail,Gmail,GMX Mail,AOL,Hotmail

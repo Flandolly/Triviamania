@@ -342,7 +342,7 @@
 
         for(const question of questionListArray){
             //Splits the question string into their individual attributes
-            const questionArr = question.split("/")
+            const questionArr = question.split(",")
             qList.questions.push(new Question(questionArr[0], questionArr[6], questionArr[1], questionArr.slice(2,6)))
         }
         return qList.questions
@@ -367,7 +367,7 @@
 
         const randomNum = Math.floor(Math.random() * questionList.length)
 
-        questionText.innerText = questionList[randomNum].getQuestion()
+        questionText.innerHTML = questionList[randomNum].getQuestion()
         category.innerText = questionList[randomNum].getCategory()
         choice1.innerText = questionList[randomNum].getChoices()[0]
         choice2.innerText = questionList[randomNum].getChoices()[1]
@@ -386,7 +386,7 @@
 
         const choices = document.querySelectorAll(".choice-buttons")
         const foundQuestion = qList.questions.find(element => {
-            return element.question === document.getElementById("q-text").innerText;
+            return element.question === document.getElementById("q-text").innerHTML;
         })
 
         if (playerChoice.innerText === foundQuestion.answer) {
