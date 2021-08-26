@@ -207,11 +207,24 @@ add animation here
     align-items: center;
     color: floralwhite;
     cursor: pointer;
+    text-shadow: 2px 2px black;
 }
 
 .clicked {
     border-color: #FFFFFF;
     box-shadow: 0 0 25px #FFFFFF;
+}
+
+.correct {
+    color: #66ff00;
+    border-color: #66ff00;
+    box-shadow: 0 0 25px #66ff00;
+}
+
+.wrong {
+    color: red;
+    border-color: red;
+    box-shadow: 0 0 25px red;
 }
 
 #c1 {

@@ -176,8 +176,9 @@
             choice.style.cursor = "not-allowed"
         })
         timerStoppedAt = document.getElementById("timer-number").innerText
-        console.log("Timers stopped.")
-        console.log(`Player locked in their answer at ${timerStoppedAt} seconds.`)
+        checkAnswer(document.querySelector(".clicked"))
+        //console.log("Timers stopped.")
+        //console.log(`Player locked in their answer at ${timerStoppedAt} seconds.`)
 
     }
 
@@ -229,6 +230,20 @@
         }
     }
 
+    class QuestionList {
+        constructor() {
+            this.questions = []
+        }
+
+        getQuestionList() {
+            return this.questions
+        }
+    }
+
+    var qList = new QuestionList()
+
+
+
     function loadQuestionList() {
         const file = document.createElement("input")
         let fileString = ""
@@ -244,7 +259,6 @@
             const reader = new FileReader()
             reader.onload = function() {
                 fileString = reader.result
-                //parseQuestionList(fileString)
                 document.getElementById("q-title").style.display = "none"
                 showQuestion(parseQuestionList(fileString))
             }
@@ -256,14 +270,13 @@
     function parseQuestionList(input) {
         //Splits the input string into individual question strings
         const questionListArray = input.split("\r\n")
-        const questions = []
+        //const questions = []
         for(const question of questionListArray){
             //Splits the question string into their individual attributes
             const questionArr = question.split("/")
-            questions.push(new Question(questionArr[0], questionArr[6], questionArr[1], questionArr.slice(2,6)))
+            qList.questions.push(new Question(questionArr[0], questionArr[6], questionArr[1], questionArr.slice(2,6)))
         }
-        //console.log(questions[0].getQuestion())
-        return questions
+        return qList.questions
     }
 
     function showQuestion(questionList) {
@@ -283,7 +296,35 @@
         choice2.innerText = questionList[randomNum].getChoices()[1]
         choice3.innerText = questionList[randomNum].getChoices()[2]
         choice4.innerText = questionList[randomNum].getChoices()[3]
+        choice1.setAttribute("name", `${questionList[randomNum].getChoices()[0]}`)
+        choice2.setAttribute("name", `${questionList[randomNum].getChoices()[1]}`)
+        choice3.setAttribute("name", `${questionList[randomNum].getChoices()[2]}`)
+        choice4.setAttribute("name", `${questionList[randomNum].getChoices()[3]}`)
+
     }
+
+    function checkAnswer(playerChoice) {
+
+        const choices = document.querySelectorAll(".choice-buttons")
+        const foundQuestion = qList.questions.find(element => {
+            return element.question === document.getElementById("q-text").innerText;
+        })
+        console.log(foundQuestion)
+
+        if (playerChoice.innerText === foundQuestion.answer) {
+            console.log("Player got the right answer!")
+            playerChoice.classList.add("correct")
+        } else {
+            console.log("Player got the wrong answer!")
+            playerChoice.classList.add("wrong")
+            for (const choice of choices) {
+                if (choice.getAttribute("name") === foundQuestion.answer) {
+                    choice.classList.add("correct")
+                }
+            }
+        }
+        }
+
 
     loadQuestionList()
 }
