@@ -1,4 +1,4 @@
-// noinspection ES6ConvertVarToLetConst
+// noinspection ES6ConvertVarToLetConst,CommaExpressionJS
 
 /****************************
  ****  How To Play Modal
@@ -79,17 +79,38 @@
     })
 }
 
+
+/****************************
+ **** Start Game
+ ****************************/
+
+{
+    const startButton = document.getElementById("start")
+    startButton.onclick = function () {
+        startButton.style.display = "none"
+        showQuestion(loaded)
+        startTimer()
+    }
+}
+
+
+
 /****************************
  **** Timer
  ****************************/
 
 {
     const timer = document.getElementById("timer-number")
+    var time
 
     timer.innerText = parseInt("30").toFixed(2)
 
     //Starts timer decrement interval
-    var timerInterval = setInterval(decrementTimer, 10)
+    //var timerInterval = setInterval(decrementTimer, 10)
+    function startTimer() {
+        time = setInterval(decrementTimer, 10)
+    }
+
 
     //Decrements the question timer by 0.1 every 0.1 seconds.
     function decrementTimer() {
@@ -97,7 +118,7 @@
             //Ends the timer interval when the timer hits 0
             generateTimeUp()
             disableButtons()
-            clearInterval(timerInterval)
+            clearInterval(time)
         } else {
             timer.innerText = (parseFloat(timer.innerText) - 0.01).toFixed(2)
         }
@@ -167,7 +188,7 @@
 
     // Stops the timers when user locks in their choice
     lockButton.onclick = function() {
-        clearInterval(timerInterval)
+        clearInterval(time)
         clearInterval(colorInterval)
         choices.forEach(choice => {
             choice.setAttribute("disabled", "disabled")
@@ -216,10 +237,6 @@
             this.category = category
         }
 
-        getAnswer() {
-            return this.answer
-        }
-
         getCategory() {
             return this.category
         }
@@ -238,17 +255,25 @@
             this.questions = []
         }
 
-        getQuestionList() {
-            return this.questions
+        /*
+        Sourced from: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+         */
+
+        shuffle(qList) {
+            for (let i = 0; i < qList.length; i++) {
+                const j = Math.floor(Math.random() * (i+1))
+                qList[i], qList[j] = qList[j], qList[i]
+            }
         }
     }
 
     var qList = new QuestionList()
     let runningTotal = 0
+    var fileString = ""
+    var loaded = []
 
     function loadQuestionList() {
         const file = document.createElement("input")
-        let fileString = ""
         file.id = "question-list"
         file.setAttribute("type", "file")
 
@@ -262,7 +287,8 @@
             reader.onload = function() {
                 fileString = reader.result
                 document.getElementById("q-title").style.display = "none"
-                showQuestion(parseQuestionList(fileString))
+                loaded = parseQuestionList(fileString)
+                document.getElementById("start").disabled = ""
             }
             reader.readAsText(fileList[0])
         })
@@ -272,7 +298,7 @@
     function parseQuestionList(input) {
         //Splits the input string into individual question strings
         const questionListArray = input.split("\r\n")
-        //const questions = []
+
         for(const question of questionListArray){
             //Splits the question string into their individual attributes
             const questionArr = question.split("/")
@@ -342,5 +368,18 @@
     }
 
 
-    loadQuestionList()
 }
+//TODO: Implement rounds
+//TODO: Start Game
+//TODO: End Game
+/****************************
+ **** Rounds
+ ****************************/
+
+{
+    var round = 1
+}
+
+loadQuestionList()
+//showQuestion(loaded)
+//var timerInterval = setInterval(decrementTimer, 10)
