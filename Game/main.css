@@ -7,8 +7,9 @@ body {
 
 /********************
 Tutorial Modal - Header
+End Modal
 *********************/
-#modal {
+#modal, #end-modal {
     background-color: rgba(0,0,0,0.7);
     position: fixed;
     top: 0;
@@ -20,7 +21,7 @@ Tutorial Modal - Header
     display: none;
 }
 
-#modal-textbox {
+#modal-textbox, #end-modal-textbox {
     font-family: "Klee One", fantasy;
     background-color: #abbaec;
     height: 350px;
@@ -32,7 +33,17 @@ Tutorial Modal - Header
     line-height: 120%;
 }
 
-#modal-header {
+#end-modal-textbox {
+    height: 225px;
+}
+
+#scores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#modal-header, #end-title {
     margin-top: 0;
     height: 40px;
     text-align: center;
@@ -77,7 +88,7 @@ img.modal-p1, img.modal-p2, img.modal-p3 {
     height: 220px;
 }
 
-.modal-buttons, #modalBtn {
+.modal-buttons, #modalBtn, #restart {
     font-family: "Klee One", fantasy;
     margin-top: 10px;
     padding: 15px;
@@ -85,6 +96,7 @@ img.modal-p1, img.modal-p2, img.modal-p3 {
     color: floralwhite;
     border-radius: 10px;
     border: 3px solid #254ec4;
+    cursor: pointer;
 }
 
 #close {
@@ -108,7 +120,7 @@ Main Body - Question Area
 html {
     overflow-x: hidden;
     font-family: "Klee One", fantasy;
-    text-shadow: 2px 2px black;
+    /*text-shadow: 2px 2px black;*/
 }
 
 #container {

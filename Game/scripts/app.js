@@ -1,4 +1,4 @@
-// noinspection ES6ConvertVarToLetConst,CommaExpressionJS
+
 
 /****************************
  ****  How To Play Modal
@@ -93,6 +93,16 @@
     }
 }
 
+/****************************
+ **** End Game (Modal)
+ ****************************/
+
+{
+    function endGame() {
+        const modal = document.getElementById("end-modal")
+        modal.style.display = "block"
+    }
+}
 
 
 /****************************
@@ -148,9 +158,8 @@
 
     {
         //Starts color change interval
-        //var colorInterval = setInterval(changeTextColor, 60)
-        let red = 0
-        let green = 255
+        var red = 0
+        var green = 255
 
         //Changes the color of the timer text from green to red as the timer decrements
         function changeTextColor() {
@@ -207,7 +216,11 @@
         setTimeout(function() {
             document.getElementById("score-change").style.display = "none"
         }, 5000)
-        setTimeout(startNewRound, 5000)
+        if(round <= 10) {
+            setTimeout(startNewRound, 5000)
+        } else {
+            endGame()
+        }
     }
 
     // Adds a click event for each button
@@ -312,13 +325,11 @@
     }
 
     function getUnplayedQuestions() {
-        //console.log(playedQuestions)
-        //console.log(qList.questions)
+        /*
+        Sourced from: https://stackoverflow.com/questions/50648091/check-the-difference-between-two-arrays-of-objects-in-javascript
+         */
 
-        let unplayed = qList.questions.filter(question1 => !playedQuestions.some(question2 => question2.question === question1.question))
-
-        console.log(unplayed)
-        return unplayed
+        return qList.questions.filter(question1 => !playedQuestions.some(question2 => question2.question === question1.question))
     }
 
     function showQuestion(questionList) {
@@ -386,9 +397,7 @@
 
 
 }
-//TODO: Implement rounds
-//TODO: End Game
-//TODO: Prevent duplicate questions
+
 /****************************
  **** Rounds
  ****************************/
@@ -398,10 +407,28 @@
 
     function startNewRound() {
         round++
+        resetState()
         document.getElementById("round").innerText = `Round: ${round}`
         showQuestion(getUnplayedQuestions())
+        startTimer()
     }
 
+    function resetState() {
+        const choices = document.querySelectorAll(".choice-buttons")
+        const timer = document.getElementById("timer-number")
 
+
+        choices.forEach(choice => {
+            choice.classList.remove("correct")
+            choice.classList.remove("wrong")
+            choice.classList.remove("clicked")
+            choice.disabled = ""
+            choice.style.cursor = "pointer"
+        })
+
+        timer.innerText = parseInt("30").toFixed(2)
+        red = 0
+        green = 255
+    }
 }
 loadQuestionList()
