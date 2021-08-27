@@ -153,12 +153,14 @@ html {
     color: white;
     font-size: 20px;
     padding: 20px;
+    text-shadow: 2px 2px black;
 }
 
 #time-over {
     position: relative;
     left: 43%;
     top: 41%;
+    text-shadow: 2px 2px black;
 }
 
 #category-title, #category {
@@ -309,6 +311,7 @@ add animation here
     margin: 0 auto 10px;
     color: white;
     text-align: center;
+    text-shadow: 2px 2px black;
 }
 
 #lock {
