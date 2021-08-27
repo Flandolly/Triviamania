@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&display=swap');
+
+body {
+    background-color: #527cff;
+}
+
+
+/********************
+Tutorial Modal - Header
+End Modal
+*********************/
+#modal, #end-modal {
+    background-color: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    overflow: auto;
+    display: none;
+}
+
+#modal-textbox, #end-modal-textbox {
+    font-family: "Klee One", fantasy;
+    background-color: #abbaec;
+    height: 350px;
+    width: 550px;
+    border-radius: 15px;
+    border: 2px solid #21217a;
+    margin: 200px auto;
+    padding: 3%;
+    line-height: 120%;
+}
+
+#end-modal-textbox {
+    height: 225px;
+}
+
+#scores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#modal-header, #end-title {
+    margin-top: 0;
+    height: 40px;
+    text-align: center;
+    border-bottom: 2px solid;
+    /*Border gradients sourced from: https://stackoverflow.com/questions/2717127/gradient-borders */
+    border-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1), rgba(0,0,0,0));
+    border-image-slice: 1;
+}
+
+#modal-footer {
+    margin-top: 10px;
+    width: 550px;
+    height: 100px;
+    border-top: 2px solid;
+    border-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1), rgba(0,0,0,0));
+    border-image-slice: 1;
+}
+
+img.modal-p1, img.modal-p3 {
+    display: block;
+}
+
+.img-container {
+    display: flex;
+    align-items: center;
+}
+
+img.modal-p1, img.modal-p2, img.modal-p3 {
+    width: 25%;
+    margin: 10px auto;
+}
+
+.p3 img, .p1 img {
+    margin-top: -15px;
+}
+
+.p2, .p3 {
+    display: none;
+}
+
+.p1, .p2, .p3 {
+    height: 220px;
+}
+
+.modal-buttons, #modalBtn, #restart {
+    font-family: "Klee One", fantasy;
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #21217a;
+    color: floralwhite;
+    border-radius: 10px;
+    border: 3px solid #254ec4;
+    cursor: pointer;
+}
+
+#close {
+    float: left;
+}
+
+#prev, #next {
+    margin-left: 5px;
+    margin-right: 5px;
+    float: right;
+}
+
+#prev {
+    display: none;
+}
+
+/*****************************
+Main Body - Question Area
+ *****************************/
+
+html {
+    overflow-x: hidden;
+    font-family: "Klee One", fantasy;
+    /*text-shadow: 2px 2px black;*/
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#question-area {
+    display: flex;
+    width: 80%;
+    height: 533px;
+    margin-top: -50px;
+    margin-bottom: 75px;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#main-body {
+    border: 4px solid #254ec4;
+    background-color: #21217a;
+    border-radius: 15px;
+    width: 1150px;
+    height: 450px;
+}
+
+.question-text {
+    font-family: "Klee One", fantasy;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+}
+
+#time-over {
+    position: relative;
+    left: 43%;
+    top: 41%;
+}
+
+#category-title, #category {
+    position: fixed;
+    top: 12.5%;
+}
+
+#category-title {
+    left: 44%;
+}
+
+#category {
+    left: 51%;
+}
+
+#question-list {
+    position: absolute;
+    left: 85%;
+    top: 50px;
+}
+
+/*
+add animation here
+ */
+
+#q-title {
+    position: absolute;
+    left: 86%;
+    top: 57px;
+    font-weight: bolder;
+    color: red;
+}
+
+#start {
+    position: absolute;
+    left: 42%;
+    top: 30%;
+    font-family: 'Klee One', fantasy;
+    font-size: 40px;
+    height: 80px;
+    width: 228px;
+    border: 2px solid #66ff00;
+    background-color: #50912f;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+#start:disabled {
+    border: 2px solid #e5eae5;
+    background-color: #888888;
+    cursor: not-allowed;
+}
+
+/*****************************
+ Main Body - Choices
+ *****************************/
+
+#choice-area {
+    display: flex;
+    flex-flow: row wrap;
+    width: 80%;
+    height: 250px;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-around;
+}
+
+.choice-buttons {
+    display: flex;
+    font-family: "Klee One", fantasy;
+    font-size: 26px;
+    width: 578px;
+    height: 115px;
+    word-wrap: break-word;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    color: floralwhite;
+    cursor: not-allowed;
+    text-shadow: 2px 2px black;
+}
+
+.clicked {
+    border-color: #FFFFFF;
+    box-shadow: 0 0 25px #FFFFFF;
+}
+
+.correct {
+    color: #66ff00;
+    border-color: #66ff00;
+    box-shadow: 0 0 25px #66ff00;
+}
+
+.wrong {
+    color: red;
+    border-color: red;
+    box-shadow: 0 0 25px red;
+}
+
+#c1 {
+    background-color: #7a2121;
+    border: 3px solid #c42525;
+}
+
+#c1:hover {
+    background-color: #9b4646;
+}
+
+#c2 {
+    background-color: #7a7621;
+    border: 3px solid #c4c125;
+}
+
+#c2:hover {
+    background-color: #8d8a33;
+}
+
+#c3 {
+    background-color: #49217a;
+    border: 3px solid #5225c4;
+}
+
+#c3:hover {
+    background-color: #6742a1;
+}
+
+#c4 {
+    background-color: #7a5321;
+    border: 3px solid #c47f25;
+}
+
+#c4:hover {
+    background-color: #a87635;
+}
+
+/*****************************
+ Main Body - Timer, Score, Round
+ *****************************/
+
+#timer {
+    border: 4px solid #254ec4;
+    background-color: #21217a;
+    border-radius: 15px;
+    width: 140px;
+    height: 90px;
+    margin: 0 auto 10px;
+    color: white;
+    text-align: center;
+}
+
+#lock {
+    font-family: "Klee One", fantasy;
+    font-weight: bolder;
+    width: 900px;
+    height: 50px;
+    border: 2px solid #66ff00;
+    background-color: #50912f;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 26px;
+}
+
+#lock:hover {
+    background-color: #60a63e;
+}
+
+#lock:disabled {
+    border: 2px solid #e5eae5;
+    background-color: #888888;
+    cursor: not-allowed;
+}
+
+#timer-number {
+    height: 65px;
+    font-size: 38px;
+}
+
+#timer, #score, #round {
+    font-family: "Klee One", fantasy;
+    font-weight: 600;
+}
+
+#score, #round {
+    position: fixed;
+    /*font-size: 24px;*/
+}
+
+#score {
+    left: 58%;
+    top: 30px;
+}
+
+#round {
+    left: 32%;
+    top: 30px;
+}
+
+#score-change {
+    position: absolute;
+    color: limegreen;
+    text-shadow: 2px 2px black;
+    left: 64.5%;
+    top: 3%;
+}
+
+/*****************************
+ Animations
+ *****************************/
