@@ -62,13 +62,9 @@
             </div>
         </div>
     </div>
-    <div class="top">
+    <div class="top" id="score-change"></div>
+    <div class="infoboard">
         <h2 id="score">Score: 0</h2>
-    </div>
-    <div class="top" id="score-change">
-
-    </div>
-    <div class="top">
         <h2 id="round">Round: 1</h2>
     </div>
     <div class="top" id="q-title">
@@ -87,19 +83,20 @@
             </div>
         </div>
         <div class="questions" id="main-body">
-            <div class="question-text" style="text-align: center">
+            <div class="category">
                 <p id="category-title">Category:</p>
-                <p id="category"></p>
-                <p id="q-text">
-
-                </p>
+                <p id="category">Undefined</p>
             </div>
+            <div class="question-text" style="text-align: center">
+                <p id="q-text">Testy Test</p>
+            </div>
+            <div class="start">
+                <button id="start" disabled="disabled">Play Game</button>
+            </div>
+            <div class="question-text" id="time-over" style="color: red; display: none">Time's Up!</div>
         </div>
         <div class="questions">
             <button id="lock">LOCK ANSWER</button>
-        </div>
-        <div class="start">
-            <button id="start" disabled="disabled">Play Game</button>
         </div>
     </div>
     <div id="choice-area">
