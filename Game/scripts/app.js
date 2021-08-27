@@ -140,7 +140,7 @@
     timer.innerText = parseInt("30").toFixed(2)
 
     //Starts timer decrement interval
-    //var timerInterval = setInterval(decrementTimer, 10)
+
     function startTimer() {
         time = setInterval(decrementTimer, 10)
         colorInterval = setInterval(changeTextColor, 60)
@@ -154,6 +154,7 @@
             generateTimeUp()
             disableButtons()
             clearInterval(time)
+            clearInterval(colorInterval)
         } else {
             timer.innerText = (parseFloat(timer.innerText) - 0.01).toFixed(2)
         }
@@ -168,6 +169,15 @@
         timeOver.style.color = "red"
 
         document.getElementById("main-body").append(timeOver)
+        setTimeout(function () {
+            timeOver.style.display = "none"
+        }, 5000)
+        checkAnswer("Fail")
+        if(round < 10) {
+            setTimeout(startNewRound, 5000)
+        } else {
+            setTimeout(endGame, 5000)
+        }
     }
     //Prevents choice buttons from registering clicks when the timer runs out
     function disableButtons() {
@@ -239,10 +249,10 @@
         setTimeout(function() {
             document.getElementById("score-change").style.display = "none"
         }, 5000)
-        if(round <= 10) {
+        if(round < 10) {
             setTimeout(startNewRound, 5000)
         } else {
-            endGame()
+            setTimeout(endGame, 5000)
         }
     }
 
@@ -299,12 +309,12 @@
         Sourced from: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
          */
 
-        shuffle(qList) {
-            for (let i = 0; i < qList.length; i++) {
-                const j = Math.floor(Math.random() * (i+1))
-                qList[i], qList[j] = qList[j], qList[i]
-            }
-        }
+        // shuffle(qList) {
+        //     for (let i = 0; i < qList.length; i++) {
+        //         const j = Math.floor(Math.random() * (i+1))
+        //         qList[i], qList[j] = qList[j], qList[i]
+        //     }
+        // }
     }
 
     var qList = new QuestionList()
@@ -389,6 +399,15 @@
             return element.question === document.getElementById("q-text").innerHTML;
         })
 
+        if (typeof playerChoice !== "object") {
+            for (const choice of choices) {
+                if (choice.getAttribute("name") === foundQuestion.answer) {
+                    choice.classList.add("correct")
+                }
+            }
+            return false
+        }
+
         if (playerChoice.innerText === foundQuestion.answer) {
             console.log("Player got the right answer!")
             playerChoice.classList.add("correct")
@@ -416,6 +435,7 @@
         runningTotal += total
         score.innerText = `Score: ${runningTotal}`
         scoreChange.innerText = `+${total}`
+        scoreChange.style.color = "limegreen"
         scoreChange.style.display = "block"
     }
 
