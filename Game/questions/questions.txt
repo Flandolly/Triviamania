@@ -12,4 +12,4 @@ Who is the author of "Romeo and Juliet"?,Literature,Arthur Conan Doyle,Hans Chri
 Which of the following Harry Potter books is the fourth book in the series?,Literature,The Philosopher's Stone,Goblet of Fire,Deathly Hallows,Prisoner of Azkaban,Goblet of Fire
 How many films did Sean Connery play James Bond in?,Movies,3,8,5,7,7
 In what year did Usain Bolt set the record for being the fastest man in the world?,Sports,2005,2012,2009,2015,2009
-In Space Jam: A New Legacy -- Lebron James was the lead and protagonist of the movie. Which basketball professional starred in the original 1996 film Space Jam?,Movies,Micheal Jordan,Shaquille O'Neal,Ray Allen,Kobe Bryant,Micheal Jordan
+In Space Jam: A New Legacy -- Lebron James was the lead and protagonist of the movie. Which basketball professional starred in the original 1996 film Space Jam?,Movies,Michael Jordan,Shaquille O'Neal,Ray Allen,Kobe Bryant,Micheal Jordan

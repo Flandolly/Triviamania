@@ -110,6 +110,9 @@
         const score = document.getElementById("score")
         const rnd = document.getElementById("round")
         const pScore = document.getElementById("player-score")
+        const choices = document.querySelectorAll(".choice-buttons")
+        const question = document.getElementById("q-text")
+        const category = document.getElementById("category")
 
         modal.style.display = "block"
         pScore.innerText = `Your Score: ${runningTotal}`
@@ -123,6 +126,10 @@
             rnd.innerText = "Round: 1"
             resetState()
             document.getElementById("start").style.display = "block"
+            disableButtons()
+            choices.forEach(choice => choice.innerText = "")
+            question.innerText = ""
+            category.innerText = ""
         }
     }
 }
@@ -179,14 +186,17 @@
             setTimeout(endGame, 5000)
         }
     }
-    //Prevents choice buttons from registering clicks when the timer runs out
+    //Prevents buttons from registering clicks when the timer runs out
     function disableButtons() {
         const choices = document.querySelectorAll(".choice-buttons")
+        const lockButton = document.getElementById("lock")
         choices.forEach(choice => {
             choice.setAttribute("disabled", "disabled")
             choice.style.onmouseover = ""
             choice.style.cursor = "not-allowed"
         })
+        lockButton.setAttribute("disabled", "disabled")
+        lockButton.style.cursor = "not-allowed"
     }
 
     {
@@ -234,11 +244,7 @@
     lockButton.onclick = function() {
         clearInterval(time)
         clearInterval(colorInterval)
-        choices.forEach(choice => {
-            choice.setAttribute("disabled", "disabled")
-            choice.style.onmouseover = ""
-            choice.style.cursor = "not-allowed"
-        })
+        disableButtons()
         lockButton.disabled = "disabled"
         if (checkAnswer(document.querySelector(".clicked"))) {
             calculatePoints()
@@ -268,8 +274,8 @@
                 choice.classList.add("clicked")
             }
             lockButton.disabled = ""
+            lockButton.style.cursor = "pointer"
             userChoice = choice.id
-            console.log(`Button ${userChoice} clicked.`)
         }
     })
 }
@@ -340,6 +346,7 @@
                 document.getElementById("q-title").style.display = "none"
                 parseQuestionList(fileString)
                 document.getElementById("start").disabled = ""
+                file.style.display = "none"
             }
             reader.readAsText(fileList[0])
         })
@@ -409,11 +416,9 @@
         }
 
         if (playerChoice.innerText === foundQuestion.answer) {
-            console.log("Player got the right answer!")
             playerChoice.classList.add("correct")
             return true
         } else {
-            console.log("Player got the wrong answer!")
             playerChoice.classList.add("wrong")
             for (const choice of choices) {
                 if (choice.getAttribute("name") === foundQuestion.answer) {
