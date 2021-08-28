@@ -19,6 +19,8 @@ const timer = document.getElementById("timer-number")
 const lockButton = document.getElementById("lock")
 const questionText = document.getElementById("q-text")
 const timeOver = document.getElementById("time-over")
+const savedQuestions = localStorage.getItem("questionList")
+const scoreChange = document.getElementById("score-change")
 
 
 let time
@@ -27,6 +29,7 @@ let runningTotal = 0
 let fileString
 let playedQuestions = []
 let round = 1
+
 
 
 
@@ -142,7 +145,7 @@ let round = 1
             round = 1
             runningTotal = 0
             playedQuestions = []
-            score.innerText = "Score: 0"
+            score.innerHTML = "Score: 0<span id=\"score-change\"></span>"
             rnd.innerText = "Round: 1"
             resetState()
             document.getElementById("start").style.display = "block"
@@ -258,8 +261,9 @@ let round = 1
         if (checkAnswer(document.querySelector(".clicked"))) {
             calculatePoints()
         } else {
-            document.getElementById("score-change").style.color = "black"
-            document.getElementById("score-change").innerText = "+0"
+            scoreChange.style.display = "inline"
+            scoreChange.style.color = "black"
+            scoreChange.innerText = "+0"
         }
         setTimeout(function() {
             document.getElementById("score-change").style.display = "none"
@@ -335,28 +339,35 @@ let round = 1
     const qList = new QuestionList()
 
     function loadQuestionList() {
-        const file = document.createElement("input")
-        file.id = "question-list"
-        file.setAttribute("type", "file")
-        file.setAttribute("accept", ".txt")
+        if (savedQuestions != null) {
+            document.getElementById("q-title").style.display = "none"
+            startButton.disabled = ""
+            parseQuestionList(savedQuestions)
+        } else {
+            const file = document.createElement("input")
+            file.id = "question-list"
+            file.setAttribute("type", "file")
+            file.setAttribute("accept", ".txt")
 
-        /*
-        Sourced from: https://www.geeksforgeeks.org/how-to-read-a-local-text-file-using-javascript/
-         */
+            /*
+            Sourced from: https://www.geeksforgeeks.org/how-to-read-a-local-text-file-using-javascript/
+             */
 
-        file.addEventListener("change", function(event) {
-            const fileList = event.target.files
-            const reader = new FileReader()
-            reader.onload = function() {
-                fileString = reader.result
-                document.getElementById("q-title").style.display = "none"
-                parseQuestionList(fileString)
-                document.getElementById("start").disabled = ""
-                file.style.display = "none"
-            }
-            reader.readAsText(fileList[0])
-        })
-        document.querySelector("header").append(file)
+            file.addEventListener("change", function(event) {
+                const fileList = event.target.files
+                const reader = new FileReader()
+                reader.onload = function() {
+                    fileString = reader.result
+                    document.getElementById("q-title").style.display = "none"
+                    localStorage.setItem("questionList", fileString)
+                    parseQuestionList(fileString)
+                    document.getElementById("start").disabled = ""
+                    file.style.display = "none"
+                }
+                reader.readAsText(fileList[0])
+            })
+            document.querySelector("header").append(file)
+        }
     }
 
     function parseQuestionList(input) {
@@ -431,17 +442,15 @@ let round = 1
 
     function calculatePoints() {
         const timerStopped = document.getElementById("timer-number").innerText
-        const score = document.getElementById("score")
-        const scoreChange = document.getElementById("score-change")
         const base = 300
         const multiplier = 50
         const total = base + (parseInt(timerStopped) * multiplier)
 
         runningTotal += total
-        score.innerText = `Score: ${runningTotal}`
         scoreChange.innerText = `+${total}`
+        score.innerHTML = `Score: ${runningTotal}<span id="score-change">${scoreChange.innerText}</span>`
+        scoreChange.style.display = "inline"
         scoreChange.style.color = "limegreen"
-        scoreChange.style.display = "block"
     }
 
 

@@ -159,11 +159,9 @@
 }
 
 #score-change {
-    position:absolute;
     color:#32CD32;
     text-shadow:2px 2px #000;
-    left:64.5%;
-    top:3%;
+    padding-left: 5px;
 }
 
 #scores,#container {
@@ -253,6 +251,7 @@
 
 .infoboard {
     display:flex;
+    flex-direction: row-reverse;
     justify-content:space-around;
 }
 
