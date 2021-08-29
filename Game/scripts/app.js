@@ -13,6 +13,7 @@ const endButton = document.getElementById("restart")
 const score = document.getElementById("score")
 const rnd = document.getElementById("round")
 const pScore = document.getElementById("player-score")
+const hScore = document.getElementById("high-score")
 const question = document.getElementById("q-text")
 const category = document.getElementById("category")
 const timer = document.getElementById("timer-number")
@@ -20,7 +21,9 @@ const lockButton = document.getElementById("lock")
 const questionText = document.getElementById("q-text")
 const timeOver = document.getElementById("time-over")
 const savedQuestions = localStorage.getItem("questionList")
+const savedHighScore = localStorage.getItem("highScore")
 const scoreChange = document.getElementById("score-change")
+//const changeFile = document.createElement("button")
 
 
 let time
@@ -29,6 +32,7 @@ let runningTotal = 0
 let fileString
 let playedQuestions = []
 let round = 1
+let highScore = 0
 
 
 
@@ -139,6 +143,7 @@ let round = 1
 
         modal.style.display = "block"
         pScore.innerText = `Your Score: ${runningTotal}`
+        hScore.innerText = `High Score: ${setHighScore(runningTotal)}`
 
         endButton.onclick = function() {
             modal.style.display = "none"
@@ -153,6 +158,29 @@ let round = 1
             choices.forEach(choice => choice.innerText = "")
             question.innerText = ""
             category.innerText = ""
+        }
+    }
+
+    function setHighScore(playerScore) {
+
+        //JSON files for high score?!
+
+        if (savedHighScore == null) {
+            if (playerScore > highScore) {
+                highScore = playerScore
+                localStorage.setItem("highScore", highScore)
+                return highScore
+            } else {
+                return localStorage.getItem("highScore")
+            }
+        } else {
+            if (playerScore > parseInt(savedHighScore)) {
+                highScore = playerScore
+                localStorage.setItem("highScore", highScore)
+                return highScore
+            } else {
+                return localStorage.getItem("highScore")
+            }
         }
     }
 }
