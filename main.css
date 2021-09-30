@@ -1,0 +1,310 @@
+@import url(https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&display=swap);
+
+#c1 {
+    border:3px solid #c42525;
+    background:#7a2121;
+}
+
+#c1:hover {
+    background:#9b4646;
+}
+
+#c2 {
+    border:3px solid #c4c125;
+    background:#7a7621;
+}
+
+#c2:hover {
+    background:#8d8a33;
+}
+
+#c3 {
+    border:3px solid #5225c4;
+    background:#49217a;
+}
+
+#c3:hover {
+    background:#6742a1;
+}
+
+#c4 {
+    border:3px solid #c47f25;
+    background:#7a5321;
+}
+
+#c4:hover {
+    background:#a87635;
+}
+
+#category {
+    padding-left:10px;
+}
+
+#choice-area {
+    display:flex;
+    flex-flow:row wrap;
+    width:80%;
+    height:250px;
+    flex-direction:column;
+    align-items:center;
+    align-content:space-around;
+}
+
+#close {
+    float:left;
+}
+
+#end-modal-textbox {
+    height:225px;
+}
+
+#lock {
+    font-family:"Klee One", fantasy;
+    font-weight:bolder;
+    width:900px;
+    height:50px;
+    border:2px solid #6f0;
+    cursor:pointer;
+    border-radius:25px;
+    font-size:26px;
+    background:#50912f;
+}
+
+#lock:hover {
+    background:#60a63e;
+}
+
+#main-body {
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+    border:4px solid #254ec4;
+    border-radius:15px;
+    width:1150px;
+    height:450px;
+    background:#21217a;
+}
+
+#modal,#end-modal {
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    z-index:1;
+    overflow:auto;
+    display:none;
+    background:rgba(0,0,0,0.7);
+}
+
+#modal-footer {
+    margin-top:10px;
+    width:550px;
+    height:100px;
+    border-top:2px solid;
+    border-image:linear-gradient(to right,rgba(0,0,0,0), rgba(0,0,0,1), rgba(0,0,0,0));
+    border-image-slice:1;
+}
+
+#modal-header,#end-title {
+    margin-top:0;
+    height:40px;
+    text-align:center;
+    border-bottom:2px solid;
+    border-image:linear-gradient(to right,rgba(0,0,0,0), rgba(0,0,0,1), rgba(0,0,0,0));
+    border-image-slice:1;
+}
+
+#modal-textbox,#end-modal-textbox {
+    font-family:"Klee One", fantasy;
+    height:350px;
+    width:550px;
+    border-radius:15px;
+    border:2px solid #21217a;
+    line-height:120%;
+    margin:200px auto;
+    padding:3%;
+    background:#abbaec;
+}
+
+#prev,#next {
+    margin-left:5px;
+    margin-right:5px;
+    float:right;
+}
+
+#q-title {
+    position:absolute;
+    left:86%;
+    top:57px;
+    font-weight:bolder;
+    color:red;
+}
+
+#question-area {
+    display:flex;
+    width:80%;
+    height:533px;
+    margin-top:-50px;
+    margin-bottom:75px;
+    flex-direction:column;
+    align-items:center;
+}
+
+#question-list {
+    position:absolute;
+    left:85%;
+    top:50px;
+}
+
+#score-change {
+    color:#32CD32;
+    text-shadow:2px 2px #000;
+    padding-left: 5px;
+}
+
+#scores,#container {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+#start {
+    font-family:'Klee One', fantasy;
+    font-size:40px;
+    height:80px;
+    width:228px;
+    border:2px solid #6f0;
+    cursor:pointer;
+    border-radius:25px;
+    background:#50912f;
+}
+
+#start:disabled,#lock:disabled {
+    border:2px solid #e5eae5;
+    cursor:not-allowed;
+    background:#888;
+}
+
+#timer {
+    border:4px solid #254ec4;
+    border-radius:15px;
+    width:140px;
+    height:90px;
+    color:#FFF;
+    text-align:center;
+    text-shadow:2px 2px #000;
+    margin:0 auto 10px;
+    background:#21217a;
+}
+
+#timer,#score,#round {
+    font-family:"Klee One", fantasy;
+    font-weight:600;
+}
+
+#timer-number {
+    height:65px;
+    font-size:38px;
+}
+
+.category {
+    display:flex;
+    color:#F5F5F5;
+    font-size:20px;
+    text-shadow:2px 2px #000;
+}
+
+.choice-buttons {
+    display:flex;
+    font-family:"Klee One", fantasy;
+    font-size:26px;
+    width:578px;
+    height:115px;
+    word-wrap:break-word;
+    margin-top:10px;
+    border-radius:10px;
+    justify-content:center;
+    align-items:center;
+    color:#FFFAF0;
+    cursor:not-allowed;
+    text-shadow:2px 2px #000;
+    padding:10px;
+}
+
+.clicked {
+    box-shadow:0 0 25px #FFF;
+    border-color:#FFF;
+}
+
+.correct {
+    color:#6f0;
+    box-shadow:0 0 25px #6f0;
+    border-color:#6f0;
+}
+
+.img-container {
+    display:flex;
+    align-items:center;
+}
+
+.infoboard {
+    display:flex;
+    flex-direction: row-reverse;
+    justify-content:space-around;
+}
+
+.modal-buttons,#modalBtn,#restart {
+    font-family:"Klee One", fantasy;
+    margin-top:10px;
+    color:#FFFAF0;
+    border-radius:10px;
+    border:3px solid #254ec4;
+    cursor:pointer;
+    padding:15px;
+    background:#21217a;
+}
+
+.p1,.p2,.p3 {
+    height:220px;
+}
+
+.p2,.p3,#prev {
+    display:none;
+}
+
+.p3 img,.p1 img {
+    margin-top:-15px;
+}
+
+.question-text {
+    color:#FFF;
+    font-size:32px;
+    text-shadow:2px 2px #000;
+    padding:20px;
+}
+
+.wrong {
+    color:red;
+    box-shadow:0 0 25px red;
+    border-color:red;
+}
+
+body {
+    background:#527cff;
+}
+
+html {
+    overflow:hidden;
+    font-family:"Klee One", fantasy;
+}
+
+img.modal-p1,img.modal-p2,img.modal-p3 {
+    width:25%;
+    margin:10px auto;
+}
+
+img.modal-p1,img.modal-p3 {
+    display:block;
+}
