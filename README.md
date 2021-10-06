@@ -4,4 +4,4 @@ Welcome to Triviamania! Try to answer 10 general knowledge questions as fast as 
 
 **NOTE:** you must upload the **questions.txt** file present in this repo in the **questions** folder in order to be able to start the game!
 
-Link to App: https://flandolly.github.io
+Link to App: https://flandolly.github.io/Triviamania
